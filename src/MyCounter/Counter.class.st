@@ -18,6 +18,12 @@ Class {
 }
 
 { #category : 'accessing' }
+Counter class >> startingAt: n [
+	^ self new count: n
+	
+]
+
+{ #category : 'accessing' }
 Counter >> count [
 	^ count
 ]
@@ -25,4 +31,27 @@ Counter >> count [
 { #category : 'accessing' }
 Counter >> count: n [
 	count := n
+]
+
+{ #category : 'API' }
+Counter >> decrement [
+	count := count - 1.
+]
+
+{ #category : 'accessing' }
+Counter >> increment [
+	count := count + 1.
+]
+
+{ #category : 'initialization' }
+Counter >> initialize [
+	count := 0.
+]
+
+{ #category : 'printing' }
+Counter >> printOn: aStream [
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' with value: ';
+		nextPutAll: count asString.
 ]
